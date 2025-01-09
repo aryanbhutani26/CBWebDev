@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#flexes{
+    height: 600px;
+    width: 600px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    transform: translateX(200px);
+}
+.boxes{
+    height: 100px;
+    width: 100px;
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: centre;
+
+
+}
+#B1{
+    background-color: red;
+    
+}
+#B2{
+    background-color: green;
+    
+
+}
+#B3{
+    background-color: aqua;
+    
+
+
+}
+#B4{
+    background-color: chartreuse;
+}
