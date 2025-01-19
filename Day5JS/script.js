@@ -19,7 +19,7 @@
 
 // Promise 
 let First=(()=>{
-    new Promise((resolve, reject) => {
+  return  new Promise((resolve, reject) => {
         setTimeout(() => {
             try{
                 console.log('HI');
@@ -28,6 +28,9 @@ let First=(()=>{
                 reject();}
         }, 2000);
 })})
+
+
+
 //  new Promise((resolve, reject) => {
 //     setTimeout(() => {
 //         try{
@@ -38,6 +41,27 @@ let First=(()=>{
 //     }, 2000);
   
 // })
-First();
+
+
+
+
+let second=(()=>{
+   return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                try{
+                    console.log('Bbg');
+                    resolve();
+                }catch(err){
+                    reject();}
+            }, 2000);
+          
+        })
+})
+
+
+First().then(()=>{
+    second();
+})
+
 
 
