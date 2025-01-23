@@ -1,0 +1,20 @@
+.boxes{
+    height: 100px;
+    /* width: 100px; */
+    background-color: aqua;
+    margin: 2px;
+}
+#parent{
+    background-color: blueviolet;
+    height: 500px;
+    width: 500px;
+    display: grid;
+    /* grid-template-columns: repeat(3,1fr); */
+    /* grid-template-columns: 2fr 1fr 1fr; */
+    grid-gap: 10px;
+    justify-content: space-around;
+    align-items: center;
+    /* align-content: center; */
+     grid-template-columns: 102px 102px 102px;
+    /* grid-template-columns: 102px 102px 102px;  */
+}
