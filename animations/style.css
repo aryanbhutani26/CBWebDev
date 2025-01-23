@@ -1,0 +1,91 @@
+#parent{
+    height: 200px;
+    width: 200px;
+    background-color: red;
+    /* animation-name: move;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out; */
+}
+
+#child{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    text-align: center;
+    
+    background-color: blue;
+    animation-name: move ;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: cubic-bezier(1,-0.1, 0, 1.2);
+    background-image: linear-gradient(45deg, #ff0048 0%, #e9efff 100%);
+    /* animation: rotate 2s linear infinite */
+    /* animation-name: rotate;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;  */
+
+    
+    /* -webkit-transition-delay:/ */
+/*  
+    animation-name: move;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;  */
+}
+/* #child:hover{
+    background-color: yellow;
+    transition-property: background-color;
+   
+
+    transition-duration: 2s;
+    transform: translateX(400px);
+    transition-property: transform;
+    transition-duration: 5s;
+    transition-timing-function: cubic-bezier(1,-0.45, 0.35, 1.33);
+    transition-delay: 2s; */
+    
+/* } */
+@keyframes move{
+    /* from{
+        transform: translateY(10px);
+    }
+    to{
+        transform: translateY(100px);
+    } */
+    0%{
+        transform: translate(0px, 0px) ;
+
+
+        /* transform: rotate(0deg); */
+    }
+    25%{
+        transform: translate(100px, 0px) ;
+        /* transform: rotate(90deg); */
+    }
+    50%{
+        transform: translate(100px, 100px) ;
+        ;
+        /* transform: rotate(180deg); */
+    }
+    75%{
+        transform: translate(0px, 100px)  ;
+        /* transform: rotate(2700deg); */
+
+    }
+
+
+} 
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
