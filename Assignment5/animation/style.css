@@ -1,0 +1,88 @@
+.boxes{
+    height: 100px;
+    width: 100px;
+    background-color: aqua;
+    margin: 2px;
+    border-radius: 50%;
+}
+#box1{
+    position: relative;
+    top: 80px;
+}
+#box3{
+    position: relative;
+    top: 80px;
+}
+#box4{
+    position: relative;
+    top: 50px;
+
+}
+#box5{
+    position: relative;
+    top: 80px;
+
+}
+#box7{
+    position: absolute;
+    top: 180px;
+    left: 200px;
+    background-image: linear-gradient(45deg, #ff0048 0%, #e9efff 100%);
+    animation-name:  RotateLeft;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out; 
+    }
+#BBox{
+    /* background-color: blueviolet; */
+    height: 500px;
+    width: 500px;
+    display: grid;
+    /* grid-template-columns: repeat(3,1fr); */
+    /* grid-template-columns: 2fr 1fr 1fr; */
+    grid-gap: 10px;
+    justify-content: space-around;
+    align-items: center;
+    /* align-content: center; */
+     grid-template-columns: 102px 102px 102px;
+    /* grid-template-columns: 102px 102px 102px;  */
+     animation-name:  RotateRight;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    /* animation-direction: alternate; */
+    animation-timing-function: ease-in-out; 
+}
+
+@keyframes RotateRight {
+    0%{
+        rotate:(0deg 0deg 0deg);
+        rotate: 0deg;
+    }
+    25%{
+        rotate: 90deg;
+
+    }
+    50%{
+        rotate: 180deg;
+    }
+    75% {
+        rotate: 270deg;
+    }
+}
+@keyframes RotateLeft {
+    0%{
+        rotate:(0deg 0deg 0deg);
+        rotate: 0deg;
+    }
+    25%{
+        rotate: -90deg;
+
+    }
+    50%{
+        rotate: -180deg;
+    }
+    75% {
+        rotate: -270deg;
+    }
+}
