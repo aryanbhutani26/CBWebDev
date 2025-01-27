@@ -1,0 +1,48 @@
+#BB{
+    height: 500px;
+    width: 100%;
+    border: 2px solid black;
+
+}
+#top{
+    /* border: 2px solid black; */
+    height: 50px;
+    width: 90%;
+    margin-left: 60px;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#input{
+    height: 75%;
+    width: 75%;
+    /* border: 1px solid red; */
+}
+#buttonadd{
+    margin-right: 100px;
+    
+
+}
+button{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(79, 154, 246);
+    color: white;
+    cursor: pointer;
+}
+
+#listitem{
+    height: 60%;
+    width: 100%;
+    border: 1px solid red;
+    margin-top: 80px;
+}
+.tasks{
+border: 1px solid black;
+height: 50px;
+width: 80%;
+margin-top: 15px;
+border-radius: 20px;
+
+}
