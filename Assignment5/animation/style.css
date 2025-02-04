@@ -13,7 +13,7 @@
   background-color: rgb(98, 98, 247);
 }
 .rightside{
-    transform: skewX(-45deg);
+    transform: skewX(-40deg);
     position: relative;
     right: 100px;
 }
@@ -35,7 +35,7 @@
 .dabba {
   height: 50px;
   width: 50px;
-  background-color: aqua;
+  background-color: rgb(255, 255, 255);
   /* transform: skewX(20deg); */
   border-radius: 10px;
 
