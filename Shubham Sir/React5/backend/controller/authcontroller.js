@@ -1,7 +1,7 @@
 require("dotenv").config();
 const users = require("../users");
 const JWT = require("jsonwebtoken");
-
+const router = require("express").Router();
 const login = router.post("/login", async (requestAnimationFrame, res) => {
   try {
     const { email, password } = request.body;
