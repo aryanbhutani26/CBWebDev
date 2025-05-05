@@ -4,15 +4,18 @@ const PORT = 5000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+const ProductRoute = require("./routes/productroute")
 const authRoute = require("./routes/authroute");
 const { connection } = require("./db");
-
+const userRoute = require("./routes/userroute");
+const { isLoggedIn  } = require("./middleware");
 app.get("/", (req, res) => {	
     res.status(200).json({ message: "You have the access" });
     res.send("Hello from server");
 });
-app.use("/v1", authRoute);
+app.use("/auth", authRoute);
+app.use("/user", isLoggedIn, userRoute);
+app.use("/product",isLoggedIn, ProductRoute);
 
 app.listen(PORT, () => {
     connection();
