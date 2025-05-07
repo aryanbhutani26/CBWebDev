@@ -56,7 +56,21 @@ const productmodel=new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",
         required:true
-    }
+    } , 
+    sale:{
+        live:{
+            type:Boolean,
+            default:false
+        },
+        discountpercentage:{
+            type:Number,
+            default:0
+        }
+    },
+        
+
+    
+    
     // reviews:[
     //     {
     //         userId:{
@@ -68,6 +82,7 @@ const productmodel=new mongoose.Schema({
     //         }
     //     }
     // ]
+
 },{
     timestamps:true
 })

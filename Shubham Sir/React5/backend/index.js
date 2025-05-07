@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 });
 app.use("/auth", authRoute);
 app.use("/user", isLoggedIn, userRoute);
-app.use("/product",isLoggedIn, ProductRoute);
+app.use("/product", ProductRoute);
 
 app.listen(PORT, () => {
     connection();

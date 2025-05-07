@@ -87,9 +87,21 @@ const getallProduct = async (req, res) => {
             pipeline.push(weartypeQuery);
 
         }
-        if(pipeline.length === 0){
-            pipeline.push({$sort:{createdAt:-1}})
-        }
+        pipeline.push({
+            $lookup: {
+              from: 'categories', // The collection name (usually lowercase and plural of the model name)
+              localField: 'category',
+              foreignField: '_id',
+              as: 'category'
+            }
+          });
+          
+          pipeline.push({
+            $unwind: {
+              path: '$category',
+              preserveNullAndEmptyArrays: true 
+            }
+          });
         const products = await Product.aggregate(pipeline);
         res.status(200).json({message : "Products fetched Successfully" , products})
     } catch (error) {

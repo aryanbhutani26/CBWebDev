@@ -2,8 +2,8 @@ const Users = require("../models/user.schema");
 
 const getUser = async (req, res) => {
 try {
-    const id=req.user.id;
-    const user = await Users.findById(id);
+    const user=req.user
+    // const user = await Users.findById(id);
     res.status(200).json({message : "User Found" , user})
 
 } catch (error) {
