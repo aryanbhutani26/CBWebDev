@@ -44,8 +44,7 @@ export default function AdminSignupPage() {
     setError("")
     if (!validateForm()) return;
     let user = await registerUser(formData);
-    navigate("/");
-    setIsSubmitting(true);
+    
   }
 
   return (

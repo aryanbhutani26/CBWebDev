@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 import "./pages.css";
 import { getAllProducts } from "../services/api/product";
-
+import { useDispatch, useSelector } from "react-redux";
+import { setProducts } from "../redux/features/productSlice";
 export default function Home() {
-  const [allProducts, setAllProducts] = useState([]);
+  const allProducts = useSelector((state) => state.products.value) ?? null;
+  //  const user = useSelector((state => state.userData.value))  ?? null;
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
-  const fetchProduct = async() => {
+  const fetchProduct = async () => {
     try {
       let products = await getAllProducts();
-      setAllProducts(products);
+      dispatch(setProducts(products));
+      // setAllProducts(products);
     } catch (error) {
       console.error("Error fetching products:", error);
     } finally {
@@ -49,29 +53,50 @@ export default function Home() {
               {allProducts?.map((product) => (
                 <div className="product-card" key={product._id}>
                   <div className="product-image">
-                    <img 
-                      src={product.image || "/api/placeholder/250/220"} 
-                      alt={product.name} 
+                    <img
+                      src={
+                        product.image ||
+                        "https://cdn-tracerprod.pressidium.com/wp-content/uploads/2019/12/Product-Image-Coming-Soon.jpg"
+                      }
+                      alt={product.name}
                     />
-                    {/* {product.isNew && <span className="product-badge">New</span>} */}
-                    {product.sale.live && <span className="sale-badge">Sale</span>}
+                    {product?.isNew && (
+                      <span className="product-badge">New</span>
+                    )}
+                    {product?.sale?.live && (
+                      <span className="sale-badge">Sale</span>
+                    )}
                   </div>
                   <div className="product-info">
-                    <span className="product-category">{product.category}</span>
-                    <h3 className="product-name">{product.name}</h3>
+                    <span className="product-category">
+                      {product?.category?.name}
+                    </span>
+                    <h3 className="product-name">{product?.name}</h3>
                     <div className="price-container">
-                      {product.sale.live ? (
+                      {product?.sale?.live ? (
                         <>
-                          <span className="original-price">${product.price.toFixed(2)}</span>
-                          <span className="sale-price">${(product.price - (product.sale.discountPercentage?(product.sale.discountPercentag*product.pricee/100):product.sale.discountAmount)).toFixed(2)}</span>
+                          <span className="original-price">
+                            ${product?.price.toFixed(2)}
+                          </span>
+                          <span className="sale-price">
+                            $
+                            {(
+                              product?.price -
+                              (product.sale.discountpercentage
+                                ? (product.sale.discountPercentage *
+                                    product.price) /
+                                  100
+                                : product.sale.discountAmount)
+                            ).toFixed(2)}
+                          </span>
                         </>
                       ) : (
-                        <span className="product-price">${product.price.toFixed(2)}</span>
+                        <span className="product-price">
+                          ${product?.price.toFixed(2)}
+                        </span>
                       )}
                     </div>
-                    <button className="add-to-cart">
-                      Add to Cart
-                    </button>
+                    <button className="add-to-cart">Add to Cart</button>
                   </div>
                 </div>
               ))}
@@ -83,19 +108,31 @@ export default function Home() {
           <h2>Shop By Category</h2>
           <div className="category-grid">
             <div className="category-card">
-              <img src="https://images.unsplash.com/photo-1594882645126-14020914d58d?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Running" />
+              <img
+                src="https://images.unsplash.com/photo-1594882645126-14020914d58d?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Running"
+              />
               <h3>Running</h3>
             </div>
             <div className="category-card">
-              <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?q=80&w=2500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Basketball" />
+              <img
+                src="https://images.unsplash.com/photo-1519861531473-9200262188bf?q=80&w=2500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Basketball"
+              />
               <h3>Basketball</h3>
             </div>
             <div className="category-card">
-              <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?q=80&w=3149&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Football" />
+              <img
+                src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?q=80&w=3149&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Football"
+              />
               <h3>Football</h3>
             </div>
             <div className="category-card">
-              <img src="https://images.unsplash.com/photo-1595435742656-5272d0b3fa82?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHRlbm5pc3xlbnwwfHwwfHx8MA%3D%3D" alt="Tennis" />
+              <img
+                src="https://images.unsplash.com/photo-1595435742656-5272d0b3fa82?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHRlbm5pc3xlbnwwfHwwfHx8MA%3D%3D"
+                alt="Tennis"
+              />
               <h3>Tennis</h3>
             </div>
           </div>

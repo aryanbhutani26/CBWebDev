@@ -14,7 +14,7 @@ export const loginUser = async (email, password) => {
 
     return response.data.user;
   }catch(err){
-    console.error("Error logging in:", err)
+    return err.message
   }
 }
 
@@ -25,7 +25,7 @@ export const registerUser = async (userData) => {
 
     return response.data.user;
   } catch (error) {
-    console.log(error)
+    return error.message
   }
   }
 
@@ -34,5 +34,17 @@ export const logoutUser = async () => {
 }
 
 export const getCurrentUser = async () => {
+  try{
+    let res = await axios.get(BaseUrl+"/user",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    )
+    return res.data.user
+  }catch(err){
+    return err.message
+  }
   
 }

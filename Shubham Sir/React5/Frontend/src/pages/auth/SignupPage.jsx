@@ -5,7 +5,8 @@ import { Link, useNavigate } from "react-router-dom"
 import { Eye, EyeOff, UserPlus } from "lucide-react"
 import "./auth.css"
 import { registerUser } from "../../services/api/auth"
-
+import { useDispatch } from "react-redux"
+import { setUserData } from "../../redux/features/userSlice"
 export default function SignupPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -17,7 +18,7 @@ export default function SignupPage() {
   const [error, setError] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
-
+  const dispatch = useDispatch()
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({
@@ -43,8 +44,15 @@ export default function SignupPage() {
     setError("")
     if (!validateForm()) return;
     let user = await registerUser(formData);
-    navigate("/");
-    setIsSubmitting(true);
+    if(user._id){
+    
+          dispatch(setUserData(user))
+          
+          navigate("/");
+          setIsSubmitting(true);
+        }else{
+          setError("Invalid email or password")
+        }
   }
 
   return (
